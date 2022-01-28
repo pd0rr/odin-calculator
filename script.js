@@ -27,8 +27,10 @@ function operate(operator, a, b) {
 }
 
 function generateButtonListener(display, digit) {
-    return () => display.textcontent += digit;
+    return () => display.textContent += digit;
 }
+
+var number = 0;
 
 const display = document.querySelector("#display");
 
@@ -37,5 +39,12 @@ for (let i = 0; i <= 9; i++) {
     keys[i] = document.querySelector(`#key-${i.toString()}`);
     keys[i].addEventListener('click', () => {
         display.textContent += i.toString();
+        number = Number(display.textContent);
     });
 }
+
+const clear = document.querySelector("#clear");
+clear.addEventListener('click', () => {
+    display.textContent = '';
+    number = 0;
+});

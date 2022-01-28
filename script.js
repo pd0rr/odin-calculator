@@ -30,7 +30,9 @@ function generateButtonListener(display, digit) {
     return () => display.textContent += digit;
 }
 
+var operand = 0;
 var number = 0;
+var operator = '+';
 
 const display = document.querySelector("#display");
 
@@ -48,3 +50,24 @@ clear.addEventListener('click', () => {
     display.textContent = '';
     number = 0;
 });
+
+// add event listeners for operation buttons
+
+function generateOperatorEventListener(op) {
+    return () => {
+        operator = op;
+        operand = number;
+        display.textContent = '';
+        number = 0;
+    }
+}
+
+const keyDivide = document.querySelector("#key-divide");
+const keyMultiply = document.querySelector("#key-multiply");
+const keySubtract = document.querySelector("#key-subtract");
+const keyAdd = document.querySelector("#key-add");
+
+keyDivide.addEventListener('click', generateOperatorEventListener('/'));
+keyMultiply.addEventListener('click', generateOperatorEventListener('*'));
+keySubtract.addEventListener('click', generateOperatorEventListener('-'));
+keyAdd.addEventListener('click', generateOperatorEventListener('+'));

@@ -49,6 +49,8 @@ const clear = document.querySelector("#clear");
 clear.addEventListener('click', () => {
     display.textContent = '';
     number = 0;
+    operand = 0;
+    operator = '+';
 });
 
 // add event listeners for operation buttons

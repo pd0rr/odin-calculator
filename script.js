@@ -1,3 +1,5 @@
+"use strict"
+
 function add(a, b) {
     return a + b;
 }
@@ -22,4 +24,18 @@ function operate(operator, a, b) {
         case '/':
             return divide(a, b);
     }
+}
+
+function generateButtonListener(display, digit) {
+    return () => display.textcontent += digit;
+}
+
+const display = document.querySelector("#display");
+
+const keys = [];
+for (let i = 0; i <= 9; i++) {
+    keys[i] = document.querySelector(`#key-${i.toString()}`);
+    keys[i].addEventListener('click', () => {
+        display.textContent += i.toString();
+    });
 }
